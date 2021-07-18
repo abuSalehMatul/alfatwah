@@ -1,0 +1,25 @@
+// Fonts
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.category span{
+   color: black;
+}
+.cat-border-bottom{
+    border-bottom: 1px dotted gainsboro;
+}
+.category span:hover{
+    color: #BDDE98;
+    cursor: pointer;
+}
+div[role=alert]{
+    display: none !important;
+  }
+  .tox-statusbar{
+    display: none !important;
+  }

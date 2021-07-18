@@ -1,0 +1,51 @@
+// Body
+$body-bg: rgb(253, 253, 253);
+
+// Typography
+// $font-family-sans-serif: 'Nunito', sans-serif;
+$font-family: 'Poppins', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+
+.intro{
+    background: white;
+    padding: 20px;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 23px;
+    width: 90%;
+    text-align: center;
+    border-bottom: 1px solid #BDDE98;
+    display: block;
+    margin: auto;
+}
+
+.p-l-0{
+    padding-left: 0;
+}
+.p-l-20{
+    padding-left: 20px !important;
+}
+.p-l-55{
+    padding-left: 55px !important;
+}
+.badge-secondary{
+    background-color: gainsboro !important;
+    color: black !important;
+}
+.btn-success{
+    background-color: #BDDE98 !important;
+}
