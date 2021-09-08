@@ -1,11 +1,11 @@
 <template>
   <div class="main-section mt-5 container">
     <div class="image-slider-main">
-      <transition-group name="fade" tag="div">
-        <div v-for="i in [currentIndex]" :key="i">
-          <img :src="currentImg" />
-        </div>
-      </transition-group>
+      <div v-for="(image, key) in images" :id="key + '_sliding_img'" 
+        :style="key == 0 ? 'display:block': 'display:none'"
+        :v-if="image.status == 'active'">
+          <img  :src="image.url" />
+      </div>
     </div>
   </div>
 </template>
@@ -29,14 +29,23 @@ export default {
   },
   methods: {
     startSlide: function () {
-      this.timer = setInterval(this.next, 6000);
+      let that = this;
+      setInterval(()=>{
+        that.currentIndex++;
+        if(that.currentIndex >= that.images.length) that.currentIndex = 0;
+        for(let i=0 ;i < that.images.length; i++){
+          
+          $("#"+i+"_sliding_img").hide();
+        }
+         $("#"+that.currentIndex+"_sliding_img").show(300);
+      }, 6000);
     },
     getImages: function(){
       client.get(this.url)
       .then(res => {
          let images =[];
          res.data.forEach(media => {
-            images.push(media.url)
+            images.push(media)
          });
          this.images = images;
       })

@@ -1,28 +1,13 @@
 <template>
   <div>
     <div class="row">
-      <div class="row mt-5 col-md-12">
+      <div class="row mt-2 col-md-12">
         <div v-for="category in categories" class="col-md-3 col-sm-3 col-4 mt-2 cat-border-bottom">
           <a class="col-md-12 category" :href="getCategoryHref(category.id)">
             <span>{{category.name}}</span> <span :id="'cat'+category.id">{{getCount(category.id)}} </span>
           </a>
         </div>
       </div>
-      <!-- <div class="col-md-6" style="margin-top:4%">
-        <a class="col-md-12" v-for="( media, index) in medias" v-if="index<10" :href="media.url">
-          <div class="row">
-            <div class="col-md-5">
-              <video width="100%" height="55" poster="placeholder.png" controls>
-                <source :src="media.url" type="video/mp4" />
-              </video>
-            </div>
-            <div class="col-md-7">
-              <h5 style="text-align:left;color:black">{{media.title}}</h5>
-            </div>
-          </div>
-        </a>
-        <a :href="getAllMediaLink()" style="float: right; color: #ed174b; font-weight: 600;">{{see}}</a>
-      </div> -->
     </div>
     <!-- <category-questions :categories="categories" :app_local="app_local"></category-questions> -->
   </div>

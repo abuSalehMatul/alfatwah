@@ -49,7 +49,13 @@ class QuestionsController extends Controller
     public function selectedQuestions($lang)
     {
         $fun = "answer_". $lang;
-        $questions = Question::where('is_selected', 1)->paginate(15);
+        $questions = Question::where('is_selected', 1)
+        ->where("status", 'active')
+        ->with(['answers' => function($query)use($lang){
+            $query->where("language", $lang)->where("status", 'active');
+        }])
+        ->where('language', $lang)
+        ->paginate(15);
         return view('frontend.selectedQuestions')->with('questions', $questions);
     }
 
@@ -70,6 +76,10 @@ class QuestionsController extends Controller
         ->where('status', 'active')
         ->where('language', $locale)
         ->orderBy('created_at', 'DESC')
+        ->with(['answers' => function($query)use($locale){
+            $query->where("language", $locale)->where("status", 'active');
+        }])
+        ->limit(10)
         ->get();
     }
 

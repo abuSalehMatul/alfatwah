@@ -9,12 +9,12 @@
 
 .category span{
    color: black;
+   font-size: 19px;
 }
 .cat-border-bottom{
     border-bottom: 1px dotted gainsboro;
 }
 .category span:hover{
-    color: #BDDE98;
     cursor: pointer;
 }
 div[role=alert]{

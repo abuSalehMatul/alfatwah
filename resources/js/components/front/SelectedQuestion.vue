@@ -1,10 +1,10 @@
 <template>
   <div>
-    <a :href="getQuestionLink(question)" v-for="question in selectedQuestion">
+    <a :href="getQuestionLink(question)" v-for="question in selectedQuestion"  v-if="question.answers.length > 0">
       <div class="card active">
         <div class="card-body">
           <div class="left-text">
-            <span class="short-query two-line" v-html="question.description">
+            <span class="short-query two-line" v-html="question.answers[0].question_title">
             </span>
           </div>
         </div>
@@ -31,6 +31,7 @@ export default {
           client.get(window.location.origin + "/api/selected-question")
           .then(response => {
               this.selectedQuestion = response.data;
+              console.log("selected question", this.selectedQuestion);
           })
       },
       getQuestionLink(question){

@@ -30,8 +30,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-md-12">
-                    <div class="section_heading text-center">
-                        <span> {{ __('Welcome_to') }}</span>
+                    <div class="text-center">
                         <h3>
                             <i class="fas fa-exclamation-circle"></i>{{ __('Important_Topics') }}
                         </h3>

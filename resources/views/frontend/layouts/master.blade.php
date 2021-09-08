@@ -18,14 +18,10 @@
     <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
-        rel="stylesheet">
     <style type="text/css">
         .nav-link {
             color: #222222;
         }
-
         .sub-div {
             padding: 2px;
             margin: 2px;
@@ -34,11 +30,43 @@
             cursor: pointer;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
     </style>
+    @if(app()->getLocale() == "en")
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+    body {
+        font-family: 'Nunito', sans-serif;
+    }
+    h1,h2,h3,h4,h5,h6,p,div,span{
+        text-align: left !important;
+    }
+    </style>
+    @endif
+
+    @if(app()->getLocale() == "bn")
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        
+    body {
+        font-family: 'Baloo Da 2', cursive;
+    }
+    h1,h2,h3,h4,h5,h6,p,div,span{
+        text-align: left !important;
+    }
+    </style>
+    @endif
+    @if(app()->getLocale() == "ar")
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        h1,h2,h3,h4,h5,h6,p,div,span{
+        text-align: right !important;
+        }
+    </style>
+
+    @endif
 
 
     @yield('css')
@@ -53,7 +81,7 @@
     </div>
 
 
-    <script src="{{ asset('js/app.js?v=1.2') }}"></script>
+    <script src="{{ asset('js/app.js?v=1.2') }}" defer></script>
 
     <script>
         function openSearch() {
