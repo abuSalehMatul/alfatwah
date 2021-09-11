@@ -18,7 +18,7 @@
     border-radius:5px" 
     target="blank" href="{{url('/password-reset-form/'.$string)}}">Reset Password</a>
     </div>
-    <p style="">This is a automatic email, please ignore this if that wasn't you and let us know <a href="{{url('/')}}"></a></p>
+    <p style="">This is an automatic email, please ignore this if that wasn't you and let us know <a href="{{url('/')}}"></a></p>
     @include('mails.officialSignature')
 </body>
 </html>
