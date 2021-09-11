@@ -1,10 +1,10 @@
 <template>
   <div>
-    <a :href="getQuestionLink(mostRead)"  v-for="(mostRead, index) in mostReads">
+    <a :href="getQuestionLink(mostRead)" v-if="mostRead.answers.length > 0"  v-for="(mostRead, index) in mostReads">
       <div class="card">
         <div class="card-body">
           <div class="left-text">
-            <span class="short-query two-line" v-html="mostRead.description">
+            <span class="short-query two-line" v-html="mostRead.answers[0].question_title">
             </span>
           </div>
         </div>

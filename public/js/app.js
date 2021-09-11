@@ -2148,7 +2148,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2244,6 +2243,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       images: [],
+      imageArr: [],
       timer: null,
       currentIndex: 0
     };
@@ -2432,7 +2432,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2444,7 +2443,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       key: "",
       questions: "",
-      show: false
+      showSearchAns: false,
+      showSearchBar: true
     };
   },
   methods: {
@@ -2455,11 +2455,22 @@ __webpack_require__.r(__webpack_exports__);
         _client__WEBPACK_IMPORTED_MODULE_0__["default"].get(window.location.origin + "/api/get-search?key=" + this.key).then(function (response) {
           console.log(response);
           _this.questions = response.data;
-          _this.show = true;
+          _this.showSearchAns = true;
         });
       } else {
-        this.show = false;
+        this.showSearchAns = false;
       }
+    },
+    closeSearch: function closeSearch() {
+      console.log("clonw");
+      this.showSearchAns = false;
+      this.showSearchBar = false;
+      this.questions = "";
+      $("#myOverlay").hide();
+    },
+    showSearchBardiv: function showSearchBardiv() {
+      $("#myOverlay").show();
+      this.showSearchBar = true;
     }
   }
 });
@@ -7042,7 +7053,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.search_bar[data-v-272f169c]{\n    position: fixed;\n    top: 20%;\n    left: 5%;\n    width: 90%;\n    z-index: 111;\n}\n", ""]);
+exports.push([module.i, "\n.search_bar[data-v-272f169c]{\n    position: fixed;\n    top: 15%;\n    left: 5%;\n    width: 90%;\n    z-index: 111;\n}\n", ""]);
 
 // exports
 
@@ -39597,7 +39608,7 @@ var render = function() {
             _c("div", { staticClass: "left-text" }, [
               _c("span", {
                 staticClass: "short-query two-line",
-                domProps: { innerHTML: _vm._s(article.body) }
+                domProps: { innerHTML: _vm._s(article.title) }
               })
             ])
           ])
@@ -39926,18 +39937,22 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.mostReads, function(mostRead, index) {
-      return _c("a", { attrs: { href: _vm.getQuestionLink(mostRead) } }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "left-text" }, [
-              _c("span", {
-                staticClass: "short-query two-line",
-                domProps: { innerHTML: _vm._s(mostRead.description) }
-              })
+      return mostRead.answers.length > 0
+        ? _c("a", { attrs: { href: _vm.getQuestionLink(mostRead) } }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "left-text" }, [
+                  _c("span", {
+                    staticClass: "short-query two-line",
+                    domProps: {
+                      innerHTML: _vm._s(mostRead.answers[0].question_title)
+                    }
+                  })
+                ])
+              ])
             ])
           ])
-        ])
-      ])
+        : _vm._e()
     }),
     0
   )
@@ -39967,31 +39982,30 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.newAnswers, function(answer, index) {
-      return index < 5
-        ? _c(
-            "a",
-            {
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.getAnswer(answer)
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "left-text" }, [
-                    _c("span", {
-                      staticClass: "short-query two-line",
-                      domProps: { innerHTML: _vm._s(answer.description) }
-                    })
-                  ])
-                ])
+      return _c(
+        "a",
+        {
+          attrs: { role: "button" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.getAnswer(answer)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "left-text" }, [
+                _c("span", {
+                  staticClass: "short-query two-line",
+                  domProps: { innerHTML: _vm._s(answer.question_title) }
+                })
               ])
-            ]
-          )
-        : _vm._e()
+            ])
+          ])
+        ]
+      )
     }),
     0
   )
@@ -40021,80 +40035,78 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "overlay", attrs: { id: "myOverlay" } }, [
-        _c(
-          "span",
-          {
-            staticClass: "closebtn",
-            attrs: { onclick: "closeSearch()", title: "Close Overlay" }
-          },
-          [_vm._v("×")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "overlay-content" }, [
-          _c("form", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.key,
-                  expression: "key"
-                }
-              ],
-              attrs: {
-                type: "text",
-                placeholder: "Type to Search..",
-                name: "search"
-              },
-              domProps: { value: _vm.key },
-              on: {
-                keyup: function($event) {
-                  return _vm.search()
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+      _vm.showSearchBar
+        ? _c("div", { staticClass: "overlay", attrs: { id: "myOverlay" } }, [
+            _c(
+              "span",
+              {
+                staticClass: "closebtn",
+                attrs: { title: "Close Overlay" },
+                on: {
+                  click: function($event) {
+                    return _vm.closeSearch()
                   }
-                  _vm.key = $event.target.value
                 }
-              }
-            }),
+              },
+              [_vm._v("×")]
+            ),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "overlay-content" }, [
+              _c("form", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.key,
+                      expression: "key"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Type to Search..",
+                    name: "search"
+                  },
+                  domProps: { value: _vm.key },
+                  on: {
+                    keyup: function($event) {
+                      return _vm.search()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.key = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
           ])
-        ])
-      ]),
+        : _vm._e(),
       _vm._v(" "),
-      _vm._m(1),
+      _c(
+        "button",
+        {
+          staticClass: "openBtn",
+          on: {
+            click: function($event) {
+              return _vm.showSearchBardiv()
+            }
+          }
+        },
+        [_c("i", { staticClass: "fas fa-search" })]
+      ),
       _vm._v(" "),
-      _vm.show
+      _vm.showSearchAns
         ? _c("show-search-question", { attrs: { questions: _vm.questions } })
         : _vm._e()
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { attrs: { type: "submit" } }, [
-      _c("i", { staticClass: "fas fa-search" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "openBtn", attrs: { onclick: "openSearch()" } },
-      [_c("i", { staticClass: "fas fa-search" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40163,10 +40175,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "search_bar" },
+    { staticClass: "search_bar card active" },
     _vm._l(_vm.questions, function(question) {
       return _c("a", { attrs: { href: _vm.getQuestionLink(question) } }, [
-        _c("div", { staticClass: "card active" }, [
+        _c("div", {}, [
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "left-text" }, [
               _c("i", { staticClass: "far fa-bookmark" }),

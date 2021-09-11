@@ -23,6 +23,7 @@ export default {
   data() {
     return {
       images: [],
+      imageArr: [],
       timer: null,
       currentIndex: 0,
     };

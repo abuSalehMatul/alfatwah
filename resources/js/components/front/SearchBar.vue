@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div id="myOverlay" class="overlay">
-      <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div >
+    <div id="myOverlay" class="overlay" v-if="showSearchBar">
+      <span class="closebtn" @click="closeSearch()" title="Close Overlay">×</span>
       <div class="overlay-content">
         <form>
           <input
@@ -10,17 +10,16 @@
             @keyup="search()"
             v-model="key"
             name="search"
+            class="form-control"
           />
-          <button type="submit">
-            <i class="fas fa-search"></i>
-          </button>
+
         </form>
       </div>
     </div>
-    <button class="openBtn" onclick="openSearch()">
+    <button class="openBtn" @click="showSearchBardiv()">
       <i class="fas fa-search"></i>
     </button>
-    <show-search-question v-if="show" :questions="questions"> </show-search-question>
+    <show-search-question v-if="showSearchAns" :questions="questions"> </show-search-question>
   </div>
 </template>
 
@@ -34,7 +33,8 @@ export default {
     return {
       key: "",
       questions: "",
-      show: false
+      showSearchAns: false,
+      showSearchBar: true
     };
   },
   methods: {
@@ -45,12 +45,23 @@ export default {
           .then(response => {
             console.log(response);
             this.questions = response.data;
-            this.show = true;
+            this.showSearchAns = true;
           });
       }
       else{
-          this.show = false;
+          this.showSearchAns = false;
       }
+    },
+    closeSearch(){
+      console.log("clonw")
+      this.showSearchAns = false;
+      this.showSearchBar = false;
+      this.questions = "";
+      $("#myOverlay").hide();
+    },
+    showSearchBardiv(){
+      $("#myOverlay").show();
+      this.showSearchBar = true
     }
   }
 };

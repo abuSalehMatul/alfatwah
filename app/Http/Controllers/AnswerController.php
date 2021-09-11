@@ -12,13 +12,17 @@ class AnswerController extends Controller
     public function newAnswers()
     {  
         $locale = Session::get('APP_LOCALE');
-        return Answer::where('status', 'active')->where('language', $locale)->orderBy('created_at', 'DESC')->limit(3)->get();
+        return Answer::active()
+        ->language()
+        ->orderBy('created_at', 'DESC')
+        ->limit(10)->get();
     }
 
     public function getList($lang)
     {
         $locale = Session::get('APP_LOCALE');
-        $answers = Answer::where('status', 'active')->where('language', $locale)->orderBy('created_at', 'DESC')->paginate(15);
+        $answers = Answer::active()->language()
+        ->orderBy('created_at', 'DESC')->paginate(25);
         return view('frontend.answer_list')->with('answers', $answers);
     }
 

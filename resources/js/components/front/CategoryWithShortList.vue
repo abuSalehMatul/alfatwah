@@ -9,7 +9,6 @@
         </div>
       </div>
     </div>
-    <!-- <category-questions :categories="categories" :app_local="app_local"></category-questions> -->
   </div>
 </template>
 

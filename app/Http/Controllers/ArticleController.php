@@ -10,11 +10,8 @@ class ArticleController extends Controller
 {
     public function getShortList()
     {
-        $locale = Session::get('APP_LOCALE');
-        return Article::where('status', 'active')
-        ->where('language', $locale)
-        ->orderBy('created_at', 'DESC')
-        ->limit(8)
+        return Article::getArticleQueryObj()
+        ->limit(10)
         ->get();
     }
 
@@ -26,7 +23,7 @@ class ArticleController extends Controller
 
     public function getAll($lang)
     {
-        $articles = Article::where('language', $lang)->where('status', 'active')->paginate(15);
+        $articles = Article::getArticleQueryObj()->paginate(25);
         return view('frontend.all_article')->with('articles', $articles);
     }
 }

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <a v-for="(answer, index) in newAnswers" @click.prevent="getAnswer(answer)" v-if="index < 5">
+    <a v-for="(answer, index) in newAnswers" role="button" @click.prevent="getAnswer(answer)">
       <div class="card">
         <div class="card-body">
           <div class="left-text">
             <!-- <i class="far fa-bookmark"></i> -->
-            <span class="short-query two-line" v-html="answer.description"></span>
+            <span class="short-query two-line" v-html="answer.question_title"></span>
           </div>
         </div>
       </div>

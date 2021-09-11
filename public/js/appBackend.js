@@ -2565,6 +2565,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -77821,11 +77833,14 @@ var render = function() {
         _vm._v(" "),
         _c("editor", {
           attrs: {
-            "initial-value": "Start Writing...",
             init: {
-              plugins: ["lists link image paste wordcount"],
+              plugins: [
+                "autolink lists link  preview anchor",
+                "searchreplace visualblocks fullscreen",
+                "insertdatetime paste"
+              ],
               toolbar:
-                "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help"
+                "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
             }
           },
           model: {
@@ -77843,11 +77858,14 @@ var render = function() {
         _vm._v(" "),
         _c("editor", {
           attrs: {
-            "initial-value": "Start Writing...",
             init: {
-              plugins: ["lists link image paste wordcount"],
+              plugins: [
+                "autolink lists link  preview anchor",
+                "searchreplace visualblocks fullscreen",
+                "insertdatetime paste"
+              ],
               toolbar:
-                "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help"
+                "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
             }
           },
           model: {
@@ -77867,11 +77885,14 @@ var render = function() {
         _vm._v(" "),
         _c("editor", {
           attrs: {
-            "initial-value": "Start Writing...",
             init: {
-              plugins: ["lists link image paste wordcount"],
+              plugins: [
+                "autolink lists link  preview anchor",
+                "searchreplace visualblocks fullscreen",
+                "insertdatetime paste"
+              ],
               toolbar:
-                "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help"
+                "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
             }
           },
           model: {
@@ -77889,11 +77910,14 @@ var render = function() {
         _vm._v(" "),
         _c("editor", {
           attrs: {
-            "initial-value": "Start Writing...",
             init: {
-              plugins: ["link image paste wordcount"],
+              plugins: [
+                "autolink lists link  preview anchor",
+                "searchreplace visualblocks fullscreen",
+                "insertdatetime paste"
+              ],
               toolbar:
-                "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help"
+                "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
             }
           },
           model: {

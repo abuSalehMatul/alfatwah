@@ -62,22 +62,28 @@
       <label>Question Title:</label>
       <editor
         v-model="langQuestionTitle"
-        initial-value="Start Writing..."
         :init="{
-          plugins: ['lists link image paste wordcount'],
+          plugins: [
+           'autolink lists link  preview anchor',
+           'searchreplace visualblocks fullscreen',
+           'insertdatetime paste'
+         ],
           toolbar:
-            'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+            'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
         }"
       />
       <hr />
       <label>Question</label>
       <editor
         v-model="langQuestion"
-        initial-value="Start Writing..."
         :init="{
-          plugins: ['lists link image paste wordcount'],
+          plugins: [
+           'autolink lists link  preview anchor',
+           'searchreplace visualblocks fullscreen',
+           'insertdatetime paste'
+         ],
           toolbar:
-            'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+            'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
         }"
       />
       <hr />
@@ -85,22 +91,28 @@
       <label>Answer Title:</label>
       <editor
         v-model="answerTitle"
-        initial-value="Start Writing..."
         :init="{
-          plugins: ['lists link image paste wordcount'],
+          plugins: [
+           'autolink lists link  preview anchor',
+           'searchreplace visualblocks fullscreen',
+           'insertdatetime paste'
+         ],
           toolbar:
-            'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+            'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
         }"
       />
       <hr />
       <label>Answer</label>
       <editor
         v-model="answer"
-        initial-value="Start Writing..."
         :init="{
-          plugins: ['link image paste wordcount'],
+          plugins: [
+           'autolink lists link  preview anchor',
+           'searchreplace visualblocks fullscreen',
+           'insertdatetime paste'
+         ],
           toolbar:
-            'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+            'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
         }"
       />
     </div>

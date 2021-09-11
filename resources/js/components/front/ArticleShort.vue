@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-body">
           <div class="left-text">
-            <span class="short-query two-line" v-html="article.body"></span>
+            <span class="short-query two-line" v-html="article.title"></span>
           </div>
         </div>
       </div>

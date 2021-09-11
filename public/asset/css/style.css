@@ -6,6 +6,7 @@
 
 .top_nav li.nav-item.active {
   display: inherit;
+  font-size: 15px !important;
 }
 
 li.nav-item.dropdown {
@@ -172,6 +173,8 @@ a {
   min-height: 1px;
   padding: 1.1rem;
   border-radius: 2px;
+  font-size: 16px !important;
+  font-weight: 600 !important;
 }
 
 .important_topics h4 {
@@ -402,6 +405,9 @@ a.btn.btn-article:hover {
   box-shadow: none;
   border-radius: 0px;
 }
+.openBtn:focus{
+  outline: none;
+}
 
 .openBtn i {
   margin-top: 15px;
@@ -426,7 +432,6 @@ a.btn.btn-article:hover {
   top: 25%;
   width: 80%;
   text-align: center;
-  margin-top: 0px;
   margin: auto;
 }
 
@@ -467,7 +472,7 @@ a.btn.btn-article:hover {
   font-size: 15px;
   border: none;
   float: left;
-  width: 70%;
+  width: 95%;
   background: white;
 }
 
@@ -497,13 +502,18 @@ div#myNavbar {
   width: 178px;
 }
 
+.category{
+  padding: 0;
+}
+
 footer {
   background: #efefef;
-  padding: 15px;
+  padding: 5px 0;
 }
 
 footer p {
-  margin-top: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .social {
@@ -518,6 +528,16 @@ footer p {
 
 .social a i {
   font-size: 20px;
+}
+.nav-link {
+  color: #222222;
+}
+.sub-div {
+  padding: 2px;
+  margin: 2px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

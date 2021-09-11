@@ -15,20 +15,12 @@ use Illuminate\Support\Facades\Session;
 
 class QuestionsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     public function getMostRead(){
-        $locale = Session::get('APP_LOCALE');
-        return Question::where('status', 'active')
-        ->where('language', $locale)
+        return Question::active()
+        ->language()
+        ->with(['answers' => function($query){
+            $query->language()->active();
+        }])
         ->orderBy('view_count', 'DESC')
         ->limit(10)
         ->get();
@@ -37,24 +29,17 @@ class QuestionsController extends Controller
     public function search(Request $request)
     {
         $key = $request->get('key');
-        $locale = Session::get('APP_LOCALE');
-        return Question::where('status', 'active')
-        ->where('language', $locale)
+        return Question::active()
+        ->language()
         ->where("title", 'like', "%$key%")
         ->orderBy('view_count', 'DESC')
-        ->limit(10)
+        ->limit(20)
         ->get();
     }
 
     public function selectedQuestions($lang)
     {
-        $fun = "answer_". $lang;
-        $questions = Question::where('is_selected', 1)
-        ->where("status", 'active')
-        ->with(['answers' => function($query)use($lang){
-            $query->where("language", $lang)->where("status", 'active');
-        }])
-        ->where('language', $lang)
+        $questions = Question::getSelectedQuestionQueryObj()
         ->paginate(15);
         return view('frontend.selectedQuestions')->with('questions', $questions);
     }
@@ -71,14 +56,7 @@ class QuestionsController extends Controller
 
     public function getSelectedQuestion()
     {
-        $locale = Session::get('APP_LOCALE');
-        return Question::where('is_selected', 1)
-        ->where('status', 'active')
-        ->where('language', $locale)
-        ->orderBy('created_at', 'DESC')
-        ->with(['answers' => function($query)use($locale){
-            $query->where("language", $locale)->where("status", 'active');
-        }])
+        return Question::getSelectedQuestionQueryObj()
         ->limit(10)
         ->get();
     }
@@ -86,7 +64,7 @@ class QuestionsController extends Controller
     public function toAAnswer($lang, $qId)
     {
         $answer = Answer::where('question_id',$qId)
-        ->where('language', $lang)
+        ->language()
         ->first();
 
         return redirect()->route('to_a_answer', $answer->batch_id);
@@ -99,16 +77,8 @@ class QuestionsController extends Controller
         return view('frontend.questions.create', compact('languages', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(QuestionCreateRequest $request)
     {
-        /// return $request;
-
         try {
             $data_array = $request->only(['title','description']);
             $data_array['id'] = null;
@@ -129,51 +99,6 @@ class QuestionsController extends Controller
             'message' => "Your Question have been submitted successfully."
         ]);
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function createOrUpdateQuestion($data_array)

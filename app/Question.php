@@ -25,14 +25,35 @@ class Question extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public static function getByCategory($categoryId)
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
+
+    public function scopeLanguage($query)
     {
         $locale = Session::get('APP_LOCALE');
-        return Question::where('status', 'active')
-        ->where('language', $locale)
+        return $query->where('language', $locale);
+    }
+
+    public static function getByCategory($categoryId)
+    {
+        return Question::active()
+        ->language()
         ->where('category_id', $categoryId)
         ->orderBy('created_at', 'DESC')
         ->paginate(15);
+    }
+
+    public static function getSelectedQuestionQueryObj()
+    {
+        return Question::where('is_selected', 1)
+        ->active()
+        ->language()
+        ->orderBy('created_at', 'DESC')
+        ->with(['answers' => function($query){
+            $query->language()->active();
+        }]);
     }
 
     public function answer_bn()

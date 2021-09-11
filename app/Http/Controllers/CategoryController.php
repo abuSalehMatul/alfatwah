@@ -20,10 +20,9 @@ class CategoryController extends Controller
     }
 
     public function getQuestionCount($catId){
-        $locale = Session::get('APP_LOCALE');
         return Question::where("category_id", $catId)
-        ->where("status", "active")
-        ->where('language', $locale)
+        ->active()
+        ->language()
         ->count();
     }
 

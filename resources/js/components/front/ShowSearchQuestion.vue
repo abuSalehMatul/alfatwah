@@ -1,7 +1,7 @@
 <template>
-  <div class="search_bar">
+  <div class="search_bar card active">
     <a :href="getQuestionLink(question)" v-for="question in questions">
-      <div class="card active">
+      <div class="">
         <div class="card-body">
           <div class="left-text">
             <i class="far fa-bookmark"></i>
@@ -38,7 +38,7 @@ export default {
 <style scoped>
     .search_bar{
         position: fixed;
-        top: 20%;
+        top: 15%;
         left: 5%;
         width: 90%;
         z-index: 111;
