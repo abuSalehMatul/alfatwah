@@ -43,6 +43,11 @@ class ArticleController extends Controller
         ->with('article', $article);
     }
 
+    public function apiFind($id)
+    {
+        return Article::findOrFail($id);
+    }
+
     public function edit(Request $request)
     {
         $request->validate([

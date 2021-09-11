@@ -97,6 +97,7 @@ Route::prefix('admin/api')->namespace('Admin')->group(function(){
         Route::get('question-doughnut-by-status', 'ReportController@getQuestionDoughnutByStatus');
         Route::get('get-by-answer-stat', 'ReportController@getAnswerStat');
         Route::get('search', 'ReportController@getSearch');
+        Route::get('article/{id}', 'ArticleController@apiFind')->name('admin.article.find.api');
        
     });
     

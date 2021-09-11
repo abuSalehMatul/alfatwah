@@ -2831,16 +2831,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "article-form",
-  props: ["categories", "langs", "save_article", 'article_title', 'article_cat', "article_id", 'article_body', 'article_edit', 'article_lang'],
+  props: ["categories", "langs", "save_article", "article_title", "article_cat", "article_id", "article_body", "article_edit", "article_lang"],
   components: {
     editor: _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  mounted: function mounted() {
+    if (this.article_edit == "yes") {
+      this.getArticle(this.article_id);
+    }
   },
   data: function data() {
     var _this$article_body, _ref, _this$article_cat, _this$article_lang, _this$article_title;
@@ -2873,6 +2875,15 @@ __webpack_require__.r(__webpack_exports__);
         if (ifEdit == 0) window.location.href = res.data;else window.location.reload();
       })["catch"](function (e) {
         alert(e);
+      });
+    },
+    getArticle: function getArticle(id) {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/admin/api/article/" + id).then(function (res) {
+        console.log(res);
+        _this.body = res.data.body;
+        _this.title = res.data.title;
       });
     }
   }
@@ -78085,7 +78096,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "\n                col-md-8 col-sm-8 col-12\n                pl-0\n                pr-md-2 pr-0 pr-sm-2 pr-xl-2\n              "
+                  "col-md-8 col-sm-8 col-12 pl-0 pr-md-2 pr-0 pr-sm-2 pr-xl-2"
               },
               [
                 _c("label", [_vm._v("Category")]),
@@ -78122,13 +78133,13 @@ var render = function() {
                   _vm._l(_vm.allCategories, function(category) {
                     return _c("option", { domProps: { value: category.id } }, [
                       _vm._v(
-                        "\n                  " +
+                        "\n                " +
                           _vm._s(category.name_en) +
                           "/" +
                           _vm._s(category.name_bn) +
                           "/" +
                           _vm._s(category.name_ar) +
-                          "\n                "
+                          "\n              "
                       )
                     ])
                   }),
@@ -78172,9 +78183,7 @@ var render = function() {
                 _vm._l(_vm.allLangs, function(value, index) {
                   return _c("option", { domProps: { value: index } }, [
                     _vm._v(
-                      "\n                  " +
-                        _vm._s(value) +
-                        "\n                "
+                      "\n                " + _vm._s(value) + "\n              "
                     )
                   ])
                 }),
@@ -78196,9 +78205,13 @@ var render = function() {
               _c("editor", {
                 attrs: {
                   init: {
-                    plugins: ["link image paste wordcount"],
+                    plugins: [
+                      "autolink lists link  preview anchor",
+                      "searchreplace visualblocks fullscreen",
+                      "insertdatetime paste"
+                    ],
                     toolbar:
-                      "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help"
+                      "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
                   }
                 },
                 model: {
@@ -78224,7 +78237,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n              Save Article\n            ")]
+              [_vm._v("\n            Save Article\n          ")]
             )
           ])
         ])
