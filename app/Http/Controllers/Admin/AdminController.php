@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Mail;
-use App\Mail\AlfatwahAlHanafia;
-use App\Answer;
-use Illuminate\Support\Facades\Storage;
-use App\Article;
 use App\Book;
-use App\Category;
-use App\EmailList;
-use App\Question;
 use App\User;
+use Exception;
+use App\Answer;
+use App\Article;
+use App\Category;
+use App\Question;
+use App\EmailList;
 use Illuminate\Http\Request;
+use App\Mail\AlfatwahAlHanafia;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -64,15 +65,21 @@ class AdminController extends Controller
             'address' => 'required'
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'password' => Hash::make($request->password),
-        ]);
-        $user->assignRole($request->role);
-        return redirect()->back();
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'password' => Hash::make($request->password),
+            ]);
+            $user->assignRole($request->role);
+            return redirect()->back();
+        }
+        catch(Exception $e){
+            return "error occured. might giving duplicate entry for email. please make sure every user has a unique email address";
+        }
+        
     }
 
     public function edit(Request $request)

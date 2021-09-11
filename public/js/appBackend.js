@@ -2590,6 +2590,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      renderComponent: true,
       lang: "en",
       langQuestionTitle: "",
       langQuestion: "",
@@ -2602,23 +2603,34 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    getAnswer: function getAnswer() {
+    forceRerender: function forceRerender() {
       var _this = this;
 
+      // Remove my-component from the DOM
+      this.renderComponent = false;
+      this.$nextTick(function () {
+        // Add the component back in
+        _this.renderComponent = true;
+      });
+    },
+    getAnswer: function getAnswer() {
+      var _this2 = this;
+
+      this.forceRerender();
       _client__WEBPACK_IMPORTED_MODULE_0__["default"].get(window.location.origin + "/admin/api/get-question/" + this.lang + "/" + this.question_id).then(function (response) {
-        _this.questionAns = response.data;
-        var answer = "answer_" + _this.lang;
-        _this.langQuestionTitle = _this.questionAns[answer].question_title;
-        _this.langQuestion = _this.questionAns[answer].question;
-        _this.answer = _this.questionAns[answer].description;
-        _this.answerTitle = _this.questionAns[answer].title;
-        _this.status = _this.questionAns[answer].status;
-        _this.tag = _this.questionAns[answer].tag;
-        _this.answerId = _this.questionAns[answer].id;
+        _this2.questionAns = response.data;
+        var answer = "answer_" + _this2.lang;
+        _this2.langQuestionTitle = _this2.questionAns[answer].question_title;
+        _this2.langQuestion = _this2.questionAns[answer].question;
+        _this2.answer = _this2.questionAns[answer].description;
+        _this2.answerTitle = _this2.questionAns[answer].title;
+        _this2.status = _this2.questionAns[answer].status;
+        _this2.tag = _this2.questionAns[answer].tag;
+        _this2.answerId = _this2.questionAns[answer].id;
       });
     },
     save: function save() {
-      var _this2 = this;
+      var _this3 = this;
 
       var data = new FormData();
       data.append("answer_title", this.answerTitle);
@@ -2634,7 +2646,7 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data == 1) {
           alert("Update successful");
 
-          _this2.getAnswer();
+          _this3.getAnswer();
         } else {
           alert("Please try again later, something went wrong");
         }

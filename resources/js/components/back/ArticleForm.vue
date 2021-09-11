@@ -45,7 +45,7 @@
                 plugins: [
                   'autolink lists link  preview anchor',
                   'searchreplace visualblocks fullscreen',
-                  'insertdatetime paste',
+                  'insertdatetime paste', 
                 ],
                 toolbar:
                   'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',

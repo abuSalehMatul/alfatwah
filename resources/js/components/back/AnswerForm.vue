@@ -142,6 +142,7 @@ export default {
   },
   data() {
     return {
+      renderComponent: true,
       lang: "en",
       langQuestionTitle: "",
       langQuestion: "",
@@ -154,7 +155,17 @@ export default {
     };
   },
   methods: {
+    forceRerender() {
+      // Remove my-component from the DOM
+      this.renderComponent = false;
+
+      this.$nextTick(() => {
+        // Add the component back in
+        this.renderComponent = true;
+      });
+    },
     getAnswer() {
+      this.forceRerender();
       client
         .get(
           window.location.origin +
