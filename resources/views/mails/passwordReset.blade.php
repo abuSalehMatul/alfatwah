@@ -8,7 +8,7 @@
 </head>
 <body>
     <p style="font-weight: 800">Dear,</p>
-    <p style="text-align:center">You are receiving this email because we received a password reset request for your account.</p><br>
+    <p style="">You are receiving this email because we received a password reset request for your account.</p><br>
     <div style="width: 100%">
     <a role="button" 
     style="margin:auto;color:white;
@@ -18,7 +18,7 @@
     border-radius:5px" 
     target="blank" href="{{url('/password-reset-form/'.$string)}}">Reset Password</a>
     </div>
-    <p style="text-align:center">This is a automatic email, please ignore this if that wasn't you and let us know <a href="{{url('/')}}"></a></p>
+    <p style="">This is a automatic email, please ignore this if that wasn't you and let us know <a href="{{url('/')}}"></a></p>
     @include('mails.officialSignature')
 </body>
 </html>
