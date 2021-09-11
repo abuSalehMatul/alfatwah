@@ -31,10 +31,6 @@ class AlfatwahAlHanafia extends Mailable
     {
         if($this->file != ""){
             return $this->subject($this->subject)
-            // ->attach(url('/'). $this->file) [
-            //     'mime' => 'application/pdf',
-            // ])
-            // ->attach()
             ->view('mails.official');
         }
         return $this->subject($this->subject)

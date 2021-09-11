@@ -16,5 +16,6 @@
      <br>
      <br>
      <p>This is a automatic email, please ignore this if that wasn't you and let us know <a href="{{url('/')}}"></a></p>
+     @include('mails.officialSignature')
 </body>
 </html>

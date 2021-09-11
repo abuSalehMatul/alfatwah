@@ -8,6 +8,6 @@
 </head>
 <body>
     <p> {{$body}} </p>
-    <img style="display: block;" src="{{url('/').'/logo.png'}}">
+    @include('mails.officialSignature')
 </body>
 </html>

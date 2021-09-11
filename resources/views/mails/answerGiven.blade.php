@@ -13,6 +13,6 @@
     <p>The Detail answer could be found on the link <a href="{{$link}}">here</a></p>
     <p>Thank you for your quesion. May the Almighty ALLAH direct you on the right way.</p>
     <br>
-    <img style="display: block;" src="{{url('/').'/logo.png'}}">
+    @include('mails.officialSignature')
 </body>
 </html>

@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Media;
+use Exception;
+use App\Mail\PasswordReset;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Password;
 
 class HomeController extends Controller
 {
@@ -49,5 +57,46 @@ class HomeController extends Controller
   public function onDevelp($lang)
   {
     return view("frontend.ondevelop")->with("lang", $lang);
+  }
+
+  public function sendEmailToSetPass(Request $request)
+  {
+    $request->validate(['email' => 'required|email']);
+    try {
+      $random = Str::random(16);
+      Session::put("reset_token", $random);
+      Session::put("reset_email", $request->email);
+
+      //put the mail into queue
+      Mail::to($request->email)->send(new PasswordReset($random));
+      return redirect('/');
+    } catch (Exception $e) {
+      return "mail couldn't be sent";
+    }
+  }
+
+  public function reset($str)
+  {
+    if ($str == Session::get("reset_token")) {
+      //might written some additional logic
+      return redirect()->route("auth.passwords.reset.form", Session::get('APP_LOCALE'));
+    }
+  }
+
+  public function resetForm()
+  {
+    return view("auth.passwords.reset");
+  }
+
+  public function passResetConfirm(Request $request)
+  {
+    $request->validate([
+      'password' => 'required|min:8|confirmed',
+    ]);
+    $user = User::where("email", Session::get("reset_email"))->first();
+    $user->password = Hash::make($request->password);
+    $user->save();
+    Auth::login($user);
+    return redirect("/");
   }
 }

@@ -5,13 +5,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@redirectToHome');
 
-//
+Route::get("/password-reset-form/{string}", "HomeController@reset")->middleware('guest');
 Route::group([
     'prefix' => '{locale}',
     'where' => ['locale' => '[a-zA-Z]{2}'],
     'middleware' => 'setlocale'
 ], function () {
-    //
+    
+    Route::post("password-rest", "HomeController@sendEmailToSetPass")->name("password.email.custom")->middleware('guest');
+    Route::get("password-reset-form", "HomeController@resetForm")->name("auth.passwords.reset.form");
+    Route::post("password-reset-confirm", "HomeController@passResetConfirm")->name('auth.password.reset.confirm');
     Auth::routes();
 
   
