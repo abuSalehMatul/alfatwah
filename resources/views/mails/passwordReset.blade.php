@@ -11,7 +11,11 @@
     <p style="text-align:center">You are receiving this email because we received a password reset request for your account.</p><br>
     <div style="width: 100%">
     <a role="button" 
-    style="margin:auto;color:white;background:black;padding:5px;text-decoration:none;position:relative;left:45%;border-radius:5px" 
+    style="margin:auto;color:white;
+    background:black;padding:10px;
+    text-decoration:none;
+    position:relative;left:45%;
+    border-radius:5px" 
     target="blank" href="{{url('/password-reset-form/'.$string)}}">Reset Password</a>
     </div>
     <p style="text-align:center">This is a automatic email, please ignore this if that wasn't you and let us know <a href="{{url('/')}}"></a></p>
