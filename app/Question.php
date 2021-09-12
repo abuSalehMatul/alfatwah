@@ -10,6 +10,10 @@ class Question extends Model
     //
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'created_at' => 'datetime:m-d-Y',
+    ];
+
     public function answers()
     {
     	return $this->hasMany('App\Answer');

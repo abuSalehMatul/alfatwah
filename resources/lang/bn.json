@@ -1,5 +1,5 @@
 {
-	"Send a New Question" : "নতুন প্রশ্ন করুন",
+	"Send a New Question" : "প্রশ্ন করুন",
 	"Select a language" : "Prosno koron",
 	"Question Title" : "প্রশ্নের শিরোনাম",
 	"Category" : "বিভাগ",
@@ -37,5 +37,8 @@
 	"Phone": "ফোন",
 	"E-Mail Address": "ই-মেইল ঠিকানা",
 	"Reset Password": "পাসওয়ার্ড রিসেট করুন",
-	"Send Password Reset Link": "পাসওয়ার্ড রিসেট লিঙ্ক পাঠান"
+	"Send Password Reset Link": "পাসওয়ার্ড রিসেট লিঙ্ক পাঠান",
+	"Fatwa No": "ফতোয়া নং",
+	"Question": "প্রশ্ন",
+	"Date": "প্রকাশের তারিখ"
 }

@@ -1,14 +1,20 @@
 @extends('frontend.layouts.master')
 @section('content')
+    @php
+    $answer = "answer_".app()->getLocale();
+    @endphp
     <div class="main-section mt-5">
         <div class="container">
+            <div class="row"> 
+                <h3 class="col-md-8">{{__('Fatwa No')}} : {{$questionAnswer->$answer->id}}</h3>
+                <h5 class="col-md-4" style="padding-left: 10px">{{__('Date')}} : {{$questionAnswer->$answer->created_at}}</h5>
+            </div>
+            
+            <h3><b>{{__('Question')}}</b></h3>
             <div class="card">
+               
                 <div class="card-body">
                     <div class="left-text">
-                        @php
-                            $answer = "answer_".app()->getLocale();
-                        @endphp
-                        <i class="far fa-bookmark"></i>
                         <span>
                             <b>{!! $questionAnswer->$answer->question_title !!}</b>
                         </span>
@@ -22,11 +28,10 @@
             </div>
             <hr>
             <br>
-            <h5> {{ __('Answer') }}</h5>
+            <h3><b> {{ __('Answer') }}</b></h3>
             <div class="card">
                 <div class="card-body answer-background">
                     <div class="left-text">
-                        <i class="fas fa-arrow-right"></i>
                         <span>
                             @php
                                 $answer = "answer_".app()->getLocale();

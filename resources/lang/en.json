@@ -37,5 +37,8 @@
 	"Phone": "Phone",
 	"E-Mail Address": "E-Mail Address",
 	"Reset Password": "Reset Password",
-	"Send Password Reset Link": "Send Password Reset Link"
+	"Send Password Reset Link": "Send Password Reset Link",
+	"Fatwa No": "Fatwa No",
+	"Question": "Question",
+	"Date": "Date of published"
 }

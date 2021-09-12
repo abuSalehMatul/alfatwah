@@ -14,24 +14,24 @@ li.nav-item.dropdown {
 }
 
 .dropdown-menu.show {
-  border-top: 3px solid #BDDE98;
+  border-top: 3px solid #4a148c;
 }
 
 .modal-header {
-  background: #BDDE98;
+  background: #4a148c;
   color: #fff;
 }
 
 .btn.btn-primary {
-  background-color: #BDDE98 !important;
+  background-color: #4a148c !important;
   color: #fff;
-  border: 1px solid #BDDE98;
+  border: 1px solid #4a148c;
 }
 
 .btn.btn-secondary {
-  border: 1px solid #BDDE98;
+  border: 1px solid #4a148c;
   background-color: #fff !important;
-  color: #BDDE98;
+  color: #4a148c;
 }
 
 li.nav-item {
@@ -75,7 +75,7 @@ i.fas.fa-globe-americas {
 }
 
 .main-menu .bg-light {
-  background-color: #BDDE98 !important;
+  background-color: #4a148c !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -85,22 +85,25 @@ i.fas.fa-globe-americas {
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-  transition: all 0.5s linear;
-  color: black;
+  transition: all 0.3s linear;
   font-weight: 600;
   font-size: 19px;
 }
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+  color: white !important;
+  font-size: 20px;
+}
 
 .navbar-light .navbar-brand {
-   color: #BDDE98;
+   color: #4a148c;
 }
 .theme-bg{
-  background-color: #BDDE98;
+  background-color: #4a148c;
 }
 .new_answer {
   padding: 40px 15px;
   box-shadow: 1px 1px 8px #999;
-  border-top: 2px solid #BDDE98;
+  border-top: 2px solid #4a148c;
   height: 100%;
 }
 .see-more{
@@ -115,7 +118,7 @@ i.fas.fa-globe-americas {
 .selected_answer {
   padding: 30px 15px;
   box-shadow: 1px 1px 8px #999;
-  border-bottom: 2px solid #BDDE98;
+  border-bottom: 2px solid #4a148c;
   height: 100%;
 }
 
@@ -163,7 +166,7 @@ a {
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 .card:hover{
-   background-color: #61665c;
+   background-color: #dfddf781;
    color: white !important;
 }
 
@@ -304,13 +307,13 @@ a {
 
 .nav-tabs .nav-link.active {
   color: #fff;
-  background-color: #BDDE98;
-  border: 1px solid #BDDE98;
+  background-color: #4a148c;
+  border: 1px solid #4a148c;
   padding: 8px 55px;
 }
 
 .nav-tabs .nav-link {
-  color: #BDDE98;
+  color: #4a148c;
   background-color: #fff;
   padding: 8px 55px;
 }
@@ -324,18 +327,18 @@ a {
 
 .nav-tabs .nav-link:hover {
   color: #fff;
-  background-color: #BDDE98;
-  border: 1px solid #BDDE98;
+  background-color: #4a148c;
+  border: 1px solid #4a148c;
   transition: all 0.5s linear;
 }
 .brandtext:hover{
-  color: #BDDE98 !important;
+  color: #4a148c !important;
 }
 
 .article_section .tab-content {
   background: #fff;
   border-radius: 5px;
-  border-top: 2px solid #BDDE98;
+  border-top: 2px solid #4a148c;
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -355,26 +358,26 @@ a {
 a.btn.btn-read {
   margin-right: 5px;
   box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.18);
-  color: #BDDE98;
+  color: #4a148c;
   transition: 0.5s;
   background-color: #fff;
 }
 
 a.btn.btn-read:hover {
-  background-color: #BDDE98;
+  background-color: #4a148c;
   color: #fff;
   transition: 0.5s;
 }
 
 a.btn.btn-article {
-  background-color: #BDDE98;
+  background-color: #4a148c;
   color: #fff;
   transition: 0.5s;
 }
 
 a.btn.btn-article:hover {
-  border: 1px solid #BDDE98;
-  color: #BDDE98;
+  border: 1px solid #4a148c;
+  color: #4a148c;
   transition: 0.5s;
   background-color: #fff;
 }
@@ -403,7 +406,7 @@ a.btn.btn-article:hover {
 /* ============== Dropdown Search ===================*/
 .openBtn {
   background: transparent;
-  border: 1px solid #BDDE98 !important;
+  border: 1px solid #4a148c !important;
   cursor: pointer;
   color: #fff;
   box-shadow: none;
@@ -492,7 +495,7 @@ a.btn.btn-article:hover {
   float: left;
   width: 10%;
   padding: 5px;
-  background: #BDDE98;
+  background: #4a148c;
   font-size: 15px;
   border: none;
   cursor: pointer;
@@ -502,7 +505,7 @@ a.btn.btn-article:hover {
 
 .overlay button:hover {
   background: #fff;
-  color: #BDDE98;
+  color: #4a148c;
   transition: 0.5s;
 }
 
