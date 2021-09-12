@@ -106,6 +106,7 @@
       <editor
         v-model="answer"
         :init="{
+          height: 500,
           plugins: [
            'autolink lists link  preview anchor',
            'searchreplace visualblocks fullscreen',

@@ -31,6 +31,6 @@
         </div>
     </nav>
 </div>
-<div class="intro">
+<div class="intro" style="text-align: center !important">
     {{__('Intro')}}
 </div>
