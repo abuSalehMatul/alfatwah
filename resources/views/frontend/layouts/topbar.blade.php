@@ -13,7 +13,12 @@
             </ul>
             <li class="nav-item dropdown">
                 @php
-                    $thisUrl = url()->current().'/';
+                function str_replace_first($search, $replace, $subject)
+                {
+                    $search = '/'.preg_quote($search, '/').'/';
+                    return preg_replace($search, $replace, $subject, 1);
+                }
+                $thisUrl = url()->current().'/';
                 @endphp
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownforlang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe-americas"></i>
                     {{config("app_langs.".app()->getLocale())}}
@@ -21,8 +26,8 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownforlang">
                     @foreach(config('app_langs') as $key => $lang)
                     @php
-                        $newUrl  = str_replace(app()->getLocale(), $key, $thisUrl);
-                        $newUrl  = str_replace("/public/", "/", $newUrl);
+                        $newUrl  = str_replace_first(app()->getLocale(), $key, $thisUrl);
+                        $newUrl  = str_replace_first("/public/", "/", $newUrl);
                     @endphp
                     <a class="dropdown-item" href="{{$newUrl}}">{{$lang}}</a>
                     @endforeach
