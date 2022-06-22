@@ -9,13 +9,13 @@
     <link rel="shortcut icon" type="image/jpg" href="{{asset('logo.png')}}" />
     <link rel="apple-touch-icon" href="{{asset('logo.png')}}">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css?v=2') }}" rel="stylesheet">
     <!--Font Awesome Icon-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('asset/css/style.css?v=1') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -28,7 +28,7 @@
     h1,h2,h3,h4,h5,h6,p,div,span{
         text-align: left !important;
     }
-    @media(max-width: 768px){
+    /* @media(max-width: 768px){
         .nav-auth{
             display: block;
         }
@@ -38,7 +38,7 @@
         .nav-auth{
             display: none;
         }
-    }
+    } */
     </style>
     @endif
 
