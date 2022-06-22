@@ -22,6 +22,7 @@
                     @foreach(config('app_langs') as $key => $lang)
                     @php
                         $newUrl  = str_replace(app()->getLocale(), $key, $thisUrl);
+                        $newUrl  = str_replace("/public/", "/", $newUrl);
                     @endphp
                     <a class="dropdown-item" href="{{$newUrl}}">{{$lang}}</a>
                     @endforeach
