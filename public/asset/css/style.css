@@ -557,3 +557,15 @@ footer p {
     display: none;
   }
 }
+
+@media(max-width: 768px){
+  .nav-auth{
+    display: block;
+  }
+}
+
+@media(min-width: 769px){
+  .nav-auth{
+    display: none;
+  }
+}
