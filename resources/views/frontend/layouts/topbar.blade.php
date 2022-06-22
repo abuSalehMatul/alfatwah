@@ -12,12 +12,18 @@
                 </li>
             </ul>
             <li class="nav-item dropdown">
+                @php
+                    $thisUrl = url()->current().'/';
+                @endphp
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownforlang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe-americas"></i>
                     {{config("app_langs.".app()->getLocale())}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownforlang">
                     @foreach(config('app_langs') as $key => $lang)
-                    <a class="dropdown-item" href="{{url('/').'/'. $key}}">{{$lang}}</a>
+                    @php
+                        $newUrl  = str_replace(app()->getLocale(), $key, $thisUrl);
+                    @endphp
+                    <a class="dropdown-item" href="{{$newUrl}}">{{$lang}}</a>
                     @endforeach
                 </div>
             </li>
