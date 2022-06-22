@@ -28,6 +28,17 @@
     h1,h2,h3,h4,h5,h6,p,div,span{
         text-align: left !important;
     }
+    @media(max-width: 768px){
+        .nav-auth{
+            display: block;
+        }
+    }
+
+    @media(min-width: 769px){
+        .nav-auth{
+            display: none;
+        }
+    }
     </style>
     @endif
 
